@@ -5,12 +5,12 @@ use pulldown_cmark::{html, Options, Parser};
 
 use crate::{db::PageRecord, model::query::QueryRoot};
 
-use self::mutation::MutationRoot;
+use self::mutation::Mutation;
 
 pub mod mutation;
 pub mod query;
 
-pub type RewekeySchema = Schema<QueryRoot, MutationRoot, EmptySubscription>;
+pub type RewekeySchema = Schema<QueryRoot, Mutation, EmptySubscription>;
 
 #[derive(Debug)]
 struct Page {

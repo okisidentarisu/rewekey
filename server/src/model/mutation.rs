@@ -10,10 +10,10 @@ pub struct CreatePageInput {
     source: String,
 }
 
-pub struct MutationRoot;
+pub struct Mutation;
 
 #[Object]
-impl MutationRoot {
+impl Mutation {
     async fn create_page(
         &self,
         ctx: &agql::Context<'_>,
@@ -48,7 +48,7 @@ impl MutationRoot {
         sqlx::query(sql)
             .bind(page_record.id)
             .bind(&input.source)
-            .bind("example@example.com") // FIXME
+            .bind("example@example.com") // Todo: FIXME
             .bind(page_record.update_time)
             .execute(&mut tx)
             .await?;

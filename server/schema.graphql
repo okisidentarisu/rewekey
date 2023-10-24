@@ -1,6 +1,6 @@
 schema {
   query: QueryRoot
-  mutation: MutationRoot
+  mutation: Mutation
 }
 
 type QueryRoot {
@@ -23,7 +23,7 @@ type PageRevision {
   createTime: String!
  }
 
-type MutationRoot {
+type Mutation {
   createPage(input: CreatePageInput!): Page!
   updatePage(input: UpdatePageBodyInput!): Page!
 }

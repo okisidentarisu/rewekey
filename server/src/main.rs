@@ -4,7 +4,7 @@ use agql::{
 };
 use async_graphql as agql;
 use async_graphql_rocket::{GraphQLQuery, GraphQLRequest, GraphQLResponse};
-use model::{mutation::MutationRoot, query::QueryRoot, RewekeySchema};
+use model::{mutation::Mutation, query::QueryRoot, RewekeySchema};
 use rocket::{response::content, State};
 use sqlx::postgres::PgPoolOptions;
 
@@ -36,7 +36,7 @@ async fn rocket() -> _ {
         .connect("postgres:///rewekey_dev")
         .await
         .unwrap();
-    let schema = Schema::build(QueryRoot, MutationRoot, EmptySubscription)
+    let schema = Schema::build(QueryRoot, Mutation, EmptySubscription)
         .data(pool)
         .finish();
     rocket::build().manage(schema).mount(
